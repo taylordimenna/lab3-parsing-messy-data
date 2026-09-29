@@ -44,7 +44,7 @@ def read_fasta(path):
 patterns = {
     "sample_id": r"^([^|;\s]+)",
     "organism": (
-        r"(?:organism|species)[:=]\s*([\w. ]+)"
+        r"(?:organism|species)[:=]\s*"
         r"(.*?)"
         r"(?=\s+(?:gene|target|len|length)[:=]|[|;]|$)"
     ),
