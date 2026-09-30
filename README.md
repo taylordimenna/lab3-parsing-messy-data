@@ -2,6 +2,7 @@
 Contains my work for Lab 3: Parsing Messy Data
 
 ## Project Overview
+This project compares two approaches to structuring a messy FASTA file. This FASTA file contains 8 sequences with inconsistantly formatted headers. The two approaches used are: a written Python script with regex patterns, and a generative AI tool. Both approaches clean the same messy FASTA file into structured output tables.
 
 ## Repository Contents
 ```.gitignore``` contains the files that should not be committed to the repository. In this case, there are none located within it.
