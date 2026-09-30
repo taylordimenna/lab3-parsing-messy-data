@@ -7,11 +7,11 @@ This project compares two approaches to structuring a messy FASTA file. This FAS
 ## Repository Contents
 ```.gitignore``` contains the files that should not be committed to the repository. In this case, there are none located within it.
 
-```AI_USAGE.md``` contains information about any AI tools used to help complete this lab, and the AI-assistd cleaning portion of this project.
+```AI_USAGE.md``` contains information about any AI tools used to help complete this lab, and the AI-assisted cleaning portion of this project.
 
 ```clean_up_sequences_regex.py``` is the Python script that codes for the creation of ```cleaned_sequences.csv ``` with regex-based cleaning.
 
-```cleaned_sequences.csv``` is the output CSV file for ```clean_up_sequences_regex.py``` that contains the structued FASTA file data.
+```cleaned_sequences.csv``` is the output CSV file for ```clean_up_sequences_regex.py``` which contains the structured FASTA file data.
 
 ```comparison.md``` contains the output comparison and failure mode analysis portions of this project.
 

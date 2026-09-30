@@ -5,9 +5,9 @@ ChatGPT (GPT-5.6 Luna)
 ## Error
 Within my CSV file, samples 2 and 8 had portions of the "gene" column being put into the "organism" column.
 
-    Sample002,Homo sapiens gene,TP53,134,
+    Sample002,Homo sapiens gene,TP53,134,...
 
-    sample-8,Homo_sapiens gene,TP53,123,
+    sample-8,Homo_sapiens gene,TP53,123,...
 
 Instead of the organism being parsed as "Homo sapiens" and "Homo_sapiens", the word "gene" was also being included.
 
@@ -31,7 +31,7 @@ The prompt I typed into the LLM to allow me to correct this parsing mistake was:
     "I am writing a Python script with regex patterns to clean a messy FASTA file with 8 sequences. My existing regex patterns for one of the columns is the following: [I pasted the script located above in 'Existing script']. Within the created CSV file, a term belonging to the next column ("gene") is being parsed next to the reported 'organism' in the table. This is due to the fact that the existing FASTA file headers separates these columns by a single space. Please tell me what I need to change within my existing script to address this issue and separate these columns."
 
 ## Output
-The LLM then returned an output explaining that I was combining two patterns. The first ([\w. ]+) was capturing the organism with "gene" before the other pattern written (?=\s+(?:gene|target|len|length)[:=]|[|;]|$) had a chance to separate them. It suggested that I removed ([\w. ]+) to address the issue.
+The LLM then returned an output explaining that I was combining two patterns. The first "([\w. ]+)" was capturing the organism with "gene" before the other written pattern "(?=\s+(?:gene|target|len|length)[:=]|[|;]|$)" had a chance to separate them. It suggested that I removed "([\w. ]+)" to address the issue.
 
 ## Verifying the fix
 After receiving this suggestion, I checked the "Quick reference" table located within the README of ```week04-text-processing``` in the applied-computing-HDS repository to confirm that I understood what its suggestion would accomplish. I then made the edit within my script and ran it again. The CSV file created by the updated script ended up containing the fixed data, and so I kept the change within the script.
