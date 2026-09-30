@@ -49,8 +49,9 @@ patterns = {
         r"(?=\s+(?:gene|target|len|length)[:=]|[|;]|$)"
     ),
     "gene": r"(?:gene|target)[:=]\s*([\w-]+)",
-    "length": r"(?:len|length)[:=]\s*(\d+)\s*(?:bp)?",
-    "length_bp": r"b\b(\d+)\s*bp\b",
+    "length": r"(?:len|length)[:=]\s*(\d+|NA)\b",
+    "length_bp": r"\b(\d+)\s*bp\b",
+    "note": r"note[:=]\s*([^|;]+)",
 }
 
 #parsing the fasta
@@ -62,6 +63,7 @@ def parse_header(header):
         "organism": None,
         "gene": None,
         "length": None,
+        "note": None,
     }
 
     #Get sample_id
@@ -79,7 +81,7 @@ def parse_header(header):
     if match:
         result["gene"] = match.group(1).strip()
 
-    #Get length
+    #Get length (or NA)
     match = re.search(patterns["length"], header)
     if match:
         result["length"] = match.group(1)
@@ -89,7 +91,11 @@ def parse_header(header):
         match = re.search(patterns["length_bp"], header)
         if match:
             result["length"] = match.group(1)
-
+    #Get note
+    match = re.search(patterns["note"], header)
+    if match:
+        result["note"] = match.group(1).strip()
+    
     #Header separations with "|"
     parts = [part.strip() for part in header.split("|")]
 
@@ -133,6 +139,7 @@ def main():
         "organism",
         "gene",
         "length",
+        "note",
         "sequence",
     ]
 
@@ -142,8 +149,6 @@ def main():
 
         for header, sequence in records:
             metadata = parse_header(header)
-            if metadata["length"] is None:
-                metadata["length"] = len(sequence)
             metadata["sequence"] = sequence
             writer.writerow(metadata)
 
