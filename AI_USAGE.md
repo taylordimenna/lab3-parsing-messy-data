@@ -17,11 +17,13 @@ This was occuring because of the way that the headers within ```messy_sequences.
 ## Existing script
 Before using AI to help me correct this mistake, I had the following as my regex pattern for "organism":
 
-        "organism": (
-        r"(?:organism|species)[:=]\s*([\w. ]+)"
-        r"(.*?)"
-        r"(?=\s+(?:gene|target|len|length)[:=]|[|;]|$)"
-    ),
+    patterns = {
+            "organism": (
+            r"(?:organism|species)[:=]\s*([\w. ]+)"
+            r"(.*?)"
+            r"(?=\s+(?:gene|target|len|length)[:=]|[|;]|$)"
+        ),
+    }
 
 ## Prompt
 The prompt I typed into the LLM to allow me to correct this parsing mistake was:
