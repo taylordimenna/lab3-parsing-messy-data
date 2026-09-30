@@ -4,6 +4,31 @@ Contains my work for Lab 3: Parsing Messy Data
 ## Project Overview
 This project compares two approaches to structuring a messy FASTA file. This FASTA file contains 8 sequences with inconsistantly formatted headers. The two approaches used are: a written Python script with regex patterns, and a generative AI tool. Both approaches clean the same messy FASTA file into structured output tables.
 
+## Setup
+### 1. Clone the repository to your local computer.
+Run the following command:
+
+    git clone https://github.com/taylordimenna/lab3-parsing-messy-data.git
+
+### 2. Move into repository
+Run the following command:
+
+    cd lab3-parsing-messy-data
+
+You are now inside the ```lab3-parsing-messy-data``` directory.
+
+### 3. Verify Python
+Python is required to run the script. To check and confirm that Python is available, run the following command:
+
+    python --version
+
+### 4. Run Python script
+To run ```clean_up_sequences_regex.py```, run the following command:
+
+    python clean_up_sequences_regex.py
+
+This script reads ```messy_sequences.fasta``` and parses it into a cleaned CSV output within ```cleaned_sequences.csv```.
+
 ## Repository Contents
 ```.gitignore``` contains the files that should not be committed to the repository. In this case, there are none located within it.
 
